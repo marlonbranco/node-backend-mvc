@@ -15,6 +15,7 @@
       "max-len": [2, 100],
       "no-underscore-dangle": "off",
       "no-unused-vars": "off",
-      "class-methods-use-this":  "off"
+      "class-methods-use-this":  "off",
+      "prefer-destructuring": "off"
     }
 }

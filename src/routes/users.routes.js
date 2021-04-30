@@ -5,6 +5,7 @@ const listUsersByNameLastname = require('../controllers/ListUsersByNameLastnameC
 const showUserByNickname = require('../controllers/ShowUserByNicknameController');
 const updateUserLastnameAddress = require('../controllers/UpdateUserLastnameAndAddressController');
 const updateUserNickname = require('../controllers/UpdateUserNicknameController');
+const { validateObjectIdParams } = require('../middlewares/validateObjectId');
 
 const usersRouter = Router();
 
@@ -18,12 +19,12 @@ usersRouter.get('/', listUsersByNameLastname.index);
 usersRouter.get('/:nickname', showUserByNickname.show);
 
 // Update user nickname by id
-usersRouter.put('/change-nickname/:id', updateUserNickname.update);
+usersRouter.put('/change-nickname/:id', validateObjectIdParams, updateUserNickname.update);
 
 // Update user lastname and address by id
-usersRouter.put('/update-lastname-address/:id', updateUserLastnameAddress.update);
+usersRouter.put('/update-lastname-address/:id', validateObjectIdParams, updateUserLastnameAddress.update);
 
 // Delete user by id
-usersRouter.delete('/:id', users.delete);
+usersRouter.delete('/:id', validateObjectIdParams, users.delete);
 
 module.exports = { usersRouter };
