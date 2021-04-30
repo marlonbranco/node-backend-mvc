@@ -10,7 +10,7 @@ class UsersRepository {
     return User.findOne({
       nickname,
     })
-      .select('-__v');
+      .select(['name', 'lastname', 'nickname', '-_id']);
   }
 
   async findByNameAndLastname(name, lastname) {
