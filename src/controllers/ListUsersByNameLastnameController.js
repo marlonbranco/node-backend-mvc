@@ -4,11 +4,7 @@ const listUsers = new ListUsersByNameLastname();
 
 class ListUsersByNameLastnameController {
   async index(request, response) {
-    const {
-      name,
-      lastname,
-    } = request.query;
-
+    const { name, lastname } = request.query;
     const users = await listUsers.execute({
       name,
       lastname,

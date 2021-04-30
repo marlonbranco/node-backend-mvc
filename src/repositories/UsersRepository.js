@@ -16,21 +16,21 @@ class UsersRepository {
   async findByNameAndLastname(name, lastname) {
     // Query where it cointains the name and lastname and its case insensitive
     return User.find({
-      name: `/.*${name}.*/i`,
-      lastname: `/.*${lastname}.*/i`
+      name,
+      lastname,
     })
       .select('-__v');
   }
 
   async findByName(name) {
     // Query where it cointains the name and its case insensitive
-    return User.find({ name: `/.*${name}.*/i` })
+    return User.find({ name })
       .select('-__v');
   }
 
   async findByLastname(lastname) {
     // Query where it cointains the lastname and its case insensitive
-    return User.find({ lastname: `/.*${lastname}.*/i` })
+    return User.find({ lastname })
       .select('-__v');
   }
 
