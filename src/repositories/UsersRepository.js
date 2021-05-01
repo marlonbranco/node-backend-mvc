@@ -61,15 +61,13 @@ class UsersRepository {
     return User.findOneAndUpdate({ _id: id }, {
       $set: {
         lastname,
+        address,
+        updatedAt: Date.now(),
       },
-    }).exec();
-
-    // Object.assign(user, { lastname, address });
-    //
-    // user.updatedAt = Date.now;
-    //
-    // await user.save;
-
+    },
+    { new: true },
+    )
+      .exec();
   }
 }
 

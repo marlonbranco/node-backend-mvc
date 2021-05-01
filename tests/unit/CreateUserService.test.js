@@ -12,11 +12,12 @@ mongoose.connect(testDatabaseUrl, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
   useCreateIndex: true,
+  useFindAndModify: false,
 });
 
 describe('CreateUser', () => {
-  beforeEach(() => {
-    User.collection.drop();
+  beforeEach(async () => {
+    await User.deleteMany({}).exec();
   });
 
   it('should be able to create a new user', async () => {
