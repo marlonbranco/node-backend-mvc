@@ -19,7 +19,7 @@ function validateObjectIdParams(request, response, next) {
   const check = validateId(id);
 
   if (!check) {
-    throw new ErrorsApp('Invalid ObjectId.', 406);
+    throw new ErrorsApp('ID inválido.', 406);
   }
 }
 

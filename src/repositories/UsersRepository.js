@@ -14,23 +14,27 @@ class UsersRepository {
   }
 
   async findByNameAndLastname(name, lastname) {
+    const nameRegex = new RegExp(name, 'i');
+    const lastnameRegex = new RegExp(lastname, 'i');
     // Query where it cointains the name and lastname and its case insensitive
     return User.find({
-      name,
-      lastname,
+      name: { $regex: nameRegex },
+      lastname: { $regex: lastnameRegex },
     })
       .select('-__v');
   }
 
   async findByName(name) {
+    const nameRegex = new RegExp(name, 'i');
     // Query where it cointains the name and its case insensitive
-    return User.find({ name })
+    return User.find({ name: { $regex: nameRegex } })
       .select('-__v');
   }
 
   async findByLastname(lastname) {
+    const lastnameRegex = new RegExp(lastname, 'i');
     // Query where it cointains the lastname and its case insensitive
-    return User.find({ lastname })
+    return User.find({ lastname: { $regex: lastnameRegex } })
       .select('-__v');
   }
 
@@ -38,22 +42,17 @@ class UsersRepository {
     id,
     nickname,
   }) {
-    return User.findOneAndUpdate({ _id: id }, { $set: { nickname } })
+    return User.findOneAndUpdate({ _id: id }, {
+      $set: {
+        nickname,
+        updatedAt: Date.now(),
+      },
+    },
+    { new: true })
       .exec();
   }
 
-  async create(data) {
-    const user = new User(data);
-    return user.save();
-  }
-
-  async delete(id) {
-    const user = this.findById(id);
-
-    await user.remove();
-  }
-
-  async save({
+  async updateLastnameAddress({
     id,
     lastname,
     address,
@@ -65,9 +64,17 @@ class UsersRepository {
         updatedAt: Date.now(),
       },
     },
-    { new: true },
-    )
+    { new: true })
       .exec();
+  }
+
+  async create(data) {
+    const user = new User(data);
+    return user.save();
+  }
+
+  async delete(id) {
+    return User.findOneAndDelete({ _id: id }).exec();
   }
 }
 

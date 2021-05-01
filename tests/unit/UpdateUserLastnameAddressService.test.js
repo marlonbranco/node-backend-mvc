@@ -7,19 +7,19 @@ const UsersRepository = require('../../src/repositories/UsersRepository');
 const updateUser = require('../../src/services/UpdateUserLastnameAddressService');
 const { ErrorsApp } = require('../../src/errors/ErrorsApp');
 
-const testDatabaseUrl = process.env.MONGO_TEST;
-
-mongoose.connect(testDatabaseUrl, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-});
-
 let usersRepository = UsersRepository;
 
-describe('UpdateUser', () => {
+describe('UpdateUserLastnameAndAddress', () => {
+  const testDatabaseUrl = process.env.MONGO_TEST;
+
   beforeEach(async () => {
+    mongoose.connect(testDatabaseUrl, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+    }).catch((err) => console.error(err));
+
     await User.deleteMany({}).exec();
     usersRepository = new UsersRepository();
   });
@@ -32,6 +32,7 @@ describe('UpdateUser', () => {
       address: 'Somewhere On Earth, 0, AnyCity-AC',
       bio: 'lorem ipsum dolor sit amet consectetur adipiscing elit',
     });
+
     const updatedUser = await updateUser.execute({
       id: user._id,
       lastname: 'Trê',

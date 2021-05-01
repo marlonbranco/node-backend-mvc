@@ -21,7 +21,7 @@ class UpdateUserService {
       throw new ErrorsApp('Nickname already in use!', 405);
     }
 
-    return usersRepository.updateNickname(data);
+    return this.usersRepository.updateNickname(data);
   }
 }
 

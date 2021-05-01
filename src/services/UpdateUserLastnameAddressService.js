@@ -11,7 +11,7 @@ class UpdateUserLastnameAddressService {
       throw new ErrorsApp('User not found', 404);
     }
 
-    return usersRepository.save({ id, lastname, address });
+    return usersRepository.updateLastnameAddress({ id, lastname, address });
   }
 }
 

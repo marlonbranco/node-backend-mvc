@@ -12,8 +12,9 @@ class DeleteUserService {
     if (!user) {
       throw new ErrorsApp('User not found', 404);
     }
+    await this.usersRepository.delete(userId);
 
-    return this.usersRepository.delete(userId);
+    return undefined;
   }
 }
 

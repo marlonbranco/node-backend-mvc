@@ -6,17 +6,18 @@ const User = require('../../src/models/User');
 const createUser = require('../../src/services/CreateUserService');
 const { ErrorsApp } = require('../../src/errors/ErrorsApp');
 
-const testDatabaseUrl = process.env.MONGO_TEST;
-
-mongoose.connect(testDatabaseUrl, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-});
-
 describe('CreateUser', () => {
+  const testDatabaseUrl = process.env.MONGO_TEST;
+
   beforeEach(async () => {
+    mongoose.connect(testDatabaseUrl, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+    }).catch((err) => console.error(err));
+
+
     await User.deleteMany({}).exec();
   });
 
