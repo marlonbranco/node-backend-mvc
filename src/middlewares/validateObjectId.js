@@ -2,10 +2,10 @@ const ObjectId = require('mongoose').Types.ObjectId;
 
 const { ErrorsApp } = require('../errors/ErrorsApp');
 
-async function validateObjectIdParams(request, response, next) {
+function validateObjectIdParams(request, response, next) {
   const { id } = request.params;
 
-  const validateId = async (objectId) => {
+  const validateId = (objectId) => {
     if (ObjectId.isValid(objectId)) {
       if (String(new ObjectId(objectId)) === id) {
         next();

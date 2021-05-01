@@ -16,6 +16,7 @@
       "no-underscore-dangle": "off",
       "no-unused-vars": "off",
       "class-methods-use-this":  "off",
-      "prefer-destructuring": "off"
+      "prefer-destructuring": "off",
+      "no-undef": "off"
     }
 }

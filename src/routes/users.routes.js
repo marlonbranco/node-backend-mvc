@@ -19,10 +19,12 @@ usersRouter.get('/', listUsersByNameLastname.index);
 usersRouter.get('/:nickname', showUserByNickname.show);
 
 // Update user nickname by id
-usersRouter.put('/change-nickname/:id', validateObjectIdParams, updateUserNickname.update);
+usersRouter.put('/nickname/:id', validateObjectIdParams, updateUserNickname.update);
 
 // Update user lastname and address by id
-usersRouter.put('/update-lastname-address/:id', validateObjectIdParams, updateUserLastnameAddress.update);
+usersRouter.put('/:id',
+  validateObjectIdParams,
+  updateUserLastnameAddress.update);
 
 // Delete user by id
 usersRouter.delete('/:id', validateObjectIdParams, users.delete);

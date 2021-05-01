@@ -1,8 +1,5 @@
-const CreateUserService = require('../services/CreateUserService')
-const DeleteUserService = require('../services/DeleteUserService')
-
-const createUser = new CreateUserService();
-const deleteUser = new DeleteUserService();
+const createUser = require('../services/CreateUserService');
+const deleteUser = require('../services/DeleteUserService');
 
 class UsersController {
   async create(request, response) {
@@ -22,6 +19,4 @@ class UsersController {
   }
 }
 
-const users = new UsersController();
-
-module.exports = users;
+module.exports = new UsersController();

@@ -53,16 +53,23 @@ class UsersRepository {
     await user.remove();
   }
 
-  async save(data) {
-    const user = this.findById(data._id);
+  async save({
+    id,
+    lastname,
+    address,
+  }) {
+    return User.findOneAndUpdate({ _id: id }, {
+      $set: {
+        lastname,
+      },
+    }).exec();
 
-    Object.assign(user, data);
+    // Object.assign(user, { lastname, address });
+    //
+    // user.updatedAt = Date.now;
+    //
+    // await user.save;
 
-    user.updatedAt = Date.now;
-
-    await user.save();
-
-    return user;
   }
 }
 

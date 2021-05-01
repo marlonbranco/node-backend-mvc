@@ -1,6 +1,6 @@
 const { ErrorsApp } = require('../errors/ErrorsApp');
 
-const errorHandling = async (err, request, response, _) => {
+const errorHandling = (err, request, response, _) => {
   if (err instanceof ErrorsApp) {
     return response
       .status(err.statusCode)

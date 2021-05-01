@@ -1,17 +1,19 @@
 const UsersRepository = require('../repositories/UsersRepository');
 const { ErrorsApp } = require('../errors/ErrorsApp');
 
-const usersRepository = new UsersRepository();
-
 class UpdateUserService {
+  constructor() {
+    this.usersRepository = new UsersRepository();
+  }
+
   async execute(data) {
-    const user = await usersRepository.findById(data.id);
+    const user = await this.usersRepository.findById(data.id);
 
     if (!user) {
       throw new ErrorsApp('User not found', 404);
     }
 
-    const nicknameExists = await usersRepository.findByNickname(
+    const nicknameExists = await this.usersRepository.findByNickname(
       data.nickname,
     );
 
@@ -23,4 +25,4 @@ class UpdateUserService {
   }
 }
 
-module.exports = UpdateUserService;
+module.exports = new UpdateUserService();

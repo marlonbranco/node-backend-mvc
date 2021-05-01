@@ -1,6 +1,4 @@
-const ShowUserByNicknameService = require('../services/ShowUserByNicknameService');
-
-const showUser = new ShowUserByNicknameService();
+const showUser = require('../services/ShowUserByNicknameService');
 
 class ShowUserByNicknameController {
   async show(request, response) {
@@ -12,6 +10,4 @@ class ShowUserByNicknameController {
   }
 }
 
-const showUserByNickname = new ShowUserByNicknameController();
-
-module.exports = showUserByNickname;
+module.exports = new ShowUserByNicknameController();

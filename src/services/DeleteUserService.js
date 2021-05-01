@@ -1,18 +1,20 @@
 const UsersRepository = require('../repositories/UsersRepository');
 const { ErrorsApp } = require('../errors/ErrorsApp');
 
-const usersRepository = new UsersRepository();
-
 class DeleteUserService {
+  constructor() {
+    this.usersRepository = new UsersRepository();
+  }
+
   async execute(userId) {
-    const user = await usersRepository.findById(userId);
+    const user = await this.usersRepository.findById(userId);
 
     if (!user) {
       throw new ErrorsApp('User not found', 404);
     }
 
-    return usersRepository.delete(userId);
+    return this.usersRepository.delete(userId);
   }
 }
 
-module.exports = DeleteUserService;
+module.exports = new DeleteUserService();

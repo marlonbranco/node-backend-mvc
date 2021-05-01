@@ -1,6 +1,4 @@
-const ListUsersByNameLastname = require('../services/ListUsersByNameLastnameService');
-
-const listUsers = new ListUsersByNameLastname();
+const listUsers = require('../services/ListUsersByNameLastnameService');
 
 class ListUsersByNameLastnameController {
   async index(request, response) {
@@ -15,6 +13,4 @@ class ListUsersByNameLastnameController {
   }
 }
 
-const listUsersByNameLastname = new ListUsersByNameLastnameController();
-
-module.exports = listUsersByNameLastname;
+module.exports = new ListUsersByNameLastnameController();

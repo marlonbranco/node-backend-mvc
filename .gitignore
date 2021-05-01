@@ -9,3 +9,5 @@ node_modules
 # Docker
 .docker
 
+# Jest
+coverage

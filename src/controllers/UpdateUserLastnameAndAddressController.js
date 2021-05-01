@@ -1,6 +1,4 @@
-const UpdateUserService = require('../services/UpdateUserService');
-
-const updateUser = new UpdateUserService();
+const updateUser = require('../services/UpdateUserLastnameAddressService');
 
 class UpdateUserLastnameAndAddressController {
   async update(request, response) {
@@ -13,6 +11,4 @@ class UpdateUserLastnameAndAddressController {
   }
 }
 
-const updateUserLastnameAndAddress = new UpdateUserLastnameAndAddressController();
-
-module.exports = updateUserLastnameAndAddress;
+module.exports = new UpdateUserLastnameAndAddressController();
