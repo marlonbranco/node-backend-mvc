@@ -40,7 +40,7 @@ describe('UpdateUser', () => {
     expect(updatedUser.lastname).toBe('Trê');
     expect(updatedUser.address).toBe('Somewhere On Mars, 0, Rock-MR');
   });
-  it('should not be able to update the profile of non existent user', async () => {
+  it('should not be able to update the data of non existent user', async () => {
     await expect(
       updateUser.execute({
         id: 'nonexistente',
