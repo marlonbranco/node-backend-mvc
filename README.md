@@ -12,7 +12,7 @@ Além disso na construção do projeto foi aplicado o `design pattern` padrão M
 | ------------- | -------------- |
 | Docker 3.x    | Containerização |
 | Node 12.x     | Executar os testes |
-| Postman 4.4.3 | Realizar requests à API |
+| Postman ^4.4.3 | Realizar requests à API |
 
 #### Estrutura de pastas 🗂
 
