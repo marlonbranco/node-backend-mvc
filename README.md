@@ -60,7 +60,7 @@ docker-compose -f docker-compose.yml up -d
 
 ## Verificando se a aplicação está executando corretamente 🐳
 
-Agora abra a sua  aplicação do docker e clique no container `node-backend-mvc` ➡ `node-marlon`, e deverá ver os seguintes logs:
+Agora abra a sua aplicação do `Docker` e clique no container `node-backend-mvc` ➡ `node-marlon`, e deverá ver os seguintes logs:
 
 ![Node container Logs](.github/media/docker-logs.png)
 
