@@ -12,6 +12,7 @@ Além disso na construção do projeto foi aplicado o `design pattern` padrão M
 | ------------- | -------------- |
 | Docker 3.x    | Containerização |
 | Node 12.x     | Executar os testes |
+| Postman 4.4.3 | Realizar requests à API |
 
 #### Estrutura de pastas 🗂
 
@@ -93,7 +94,7 @@ Cria um usuário, já há um User **John Doe** como exemplo definido no Body da 
 
 **GET** Show User By Nickname:
 
-Mostra os dados `name, lastname & nickname`, é necessário passar o `nickname` do usuário como Route params no request.
+Mostra os dados `name, lastname & nickname`, é necessário passar o `nickname` do usuário como Path variables no request.
 
 > /users/:nickname
 
@@ -111,18 +112,18 @@ As 3 maneiras funcionam, também se colocar apenas uma letra do nome ele retorna
 
 **PUT** Update Nickname:
 
-Nesta rota é possível fazer a troca do `nickname` do usuário, enviando o nickname no corpo da requisição, passando o ID do usuário como Route params do request:
+Nesta rota é possível fazer a troca do `nickname` do usuário, enviando o nickname no corpo da requisição, passando o ID do usuário como Path variables do request:
 
 > /users/nickname/:id
 
 **PUT** Update User Info Lastname and Address:
 
-Nesta rota é possível alterar `lastname & address` do usuário, enviando o as informações no corpo da requisição, passando o ID do usuário como Route params do request:
+Nesta rota é possível alterar `lastname & address` do usuário, enviando o as informações no corpo da requisição, passando o ID do usuário como Path variables do request:
 
 > /users/info/:id
 
 **DELETE** Delete User:
 
-Nesta rota é possível deletar um usuário, pelo ID informado no Path Variables.
+Nesta rota é possível deletar um usuário, pelo ID informado no Path Variable.
 
 > /users/:id
