@@ -11,7 +11,7 @@ Além disso na construção do projeto foi aplicado o `design pattern` padrão M
 | Requerimento  | Uso |
 | ------------- | -------------- |
 | Docker 3.x    | Containerização |
-| Node 12.x     | Rodar os testes |
+| Node 12.x     | Executar os testes |
 
 #### Estrutura de pastas 🗂
 
@@ -47,10 +47,21 @@ ou
 yarn
 ```
 
+## Executando os testes ✅ ✅ ✅
 
-## Criação dos containers com Docker 🐳
+Execute o seguinte comando no terminal para executar os testes unitários:
 
-Execute o seguinte comando no terminal para criar uma build da aplicação em uma imagem do Node.JS onde a API rodará e criar junto um container, dentro desse container serão criados 2 containers um para o Node.JS o outro para o MongoDB:
+```bash
+npm test
+```
+ou
+```bash
+yarn test
+```
+
+## Criação dos containers com Docker para execução da aplicação 🐳
+
+Execute o seguinte comando no terminal para criar uma build da aplicação em uma imagem do Node.JS onde a API executará e criar junto um container, dentro desse container serão criados 2 containers um para o Node.JS o outro para o MongoDB:
 
 ```bash
 docker-compose -f docker-compose.yml up -d
@@ -58,13 +69,13 @@ docker-compose -f docker-compose.yml up -d
 
 > Após a execução o container node-backend-mvc será gerada no seu Docker
 
-## Verificando se a aplicação está rodando corretamente 🐳
+## Verificando se a aplicação está executando corretamente 🐳
 
 Agora abra a sua  aplicação do docker e clique no container `node-backend-mvc` ➡ `node-marlon`, e deverá ver os seguintes logs:
 
 ![Node container Logs](.github/media/docker-logs.png)
 
-> Se tudo estiver rodando perfeitamente os logs da imagem acima deverão ser exibidos.
+> Se tudo estiver executando perfeitamente os logs da imagem acima deverão ser exibidos.
 
 # Documentação com os endpoints da API no Postman 🐱‍🚀
 
