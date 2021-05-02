@@ -68,7 +68,7 @@ Agora abra a sua  aplicação do docker e clique no container `node-backend-mvc`
 
 # Documentação com os endpoints da API no Postman 🐱‍🚀
 
-Acesse a este que com a documentação das rotas e é possível testálas pelo próprio Postman:
+Clique no botão abaixo e acesse a documentação com todos os endpoints da API, é possível testá-las pelo próprio Postman:
 
 [![Postman](https://img.shields.io/badge/-POSTMAN-FF6C37?logo=postman&logoColor=white)](https://tinyurl.com/node-backend-mvc)
 
