@@ -14,7 +14,7 @@ class CreateUserService {
       throw new AppErrors('White spaces are not allowed on the nickname!', 405);
     }
 
-    const nicknameExists = await this.usersRepository.checkNickname(
+    const nicknameExists = await this.usersRepository.findByNickname(
       data.nickname,
     );
 
