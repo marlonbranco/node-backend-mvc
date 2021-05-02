@@ -9,19 +9,15 @@ class AppController {
   constructor() {
     this.express = express();
 
-    this.middlewares();
-    this.routes();
+    this.app();
   }
 
-  middlewares() {
+  app() {
     this.express.use(cors());
     this.express.use(express.json());
+    this.express.use(routes);
     this.express.use(errors());
     this.express.use(errorHandling);
-  }
-
-  routes() {
-    this.express.use(routes);
   }
 }
 

@@ -15,7 +15,7 @@ class UsersController {
 
     await deleteUser.execute(id);
 
-    return response.status(200);
+    return response.status(200).json();
   }
 }
 

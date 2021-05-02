@@ -1,5 +1,6 @@
 const UsersRepository = require('../repositories/UsersRepository');
-const { ErrorsApp } = require('../errors/ErrorsApp');
+const { AppErrors } = require('../errors/AppErrors');
+const hasWhiteSpace = require('../utils/whiteSpaceCheck');
 
 class CreateUserService {
   constructor() {
@@ -7,12 +8,18 @@ class CreateUserService {
   }
 
   async execute(data) {
-    const nicknameExists = await this.usersRepository.findByNickname(
+    const nicknameHasWhiteSpace = hasWhiteSpace(data.nickname);
+
+    if (nicknameHasWhiteSpace) {
+      throw new AppErrors('White spaces are not allowed on the nickname!', 405);
+    }
+
+    const nicknameExists = await this.usersRepository.checkNickname(
       data.nickname,
     );
 
     if (nicknameExists) {
-      throw new ErrorsApp('Nickname already in use!', 405);
+      throw new AppErrors('Nickname already in use!', 405);
     }
 
     return this.usersRepository.create(data);

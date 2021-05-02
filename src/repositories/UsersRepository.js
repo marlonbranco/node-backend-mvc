@@ -52,6 +52,12 @@ class UsersRepository {
       .exec();
   }
 
+  async checkNickname(nickname) {
+    return User.findOne({
+      nickname,
+    });
+  }
+
   async updateLastnameAddress({
     id,
     lastname,

@@ -6,11 +6,16 @@ const showUserByNickname = require('../controllers/ShowUserByNicknameController'
 const updateUserLastnameAddress = require('../controllers/UpdateUserLastnameAndAddressController');
 const updateUserNickname = require('../controllers/UpdateUserNicknameController');
 const { validateObjectIdParams } = require('../middlewares/validateObjectId');
+const {
+  createUserFormValidation,
+  updateUserNicknameValidation,
+  updateUserAddressLastnameValidation,
+} = require('../validations/user.validations');
 
 const usersRouter = Router();
 
 // Create User
-usersRouter.post('/', users.create);
+usersRouter.post('/', createUserFormValidation, users.create);
 
 // List and filter users by name and/or lastname
 usersRouter.get('/', listUsersByNameLastname.index);
@@ -19,11 +24,15 @@ usersRouter.get('/', listUsersByNameLastname.index);
 usersRouter.get('/:nickname', showUserByNickname.show);
 
 // Update user nickname by id
-usersRouter.put('/nickname/:id', validateObjectIdParams, updateUserNickname.update);
+usersRouter.put('/nickname/:id',
+  validateObjectIdParams,
+  updateUserNicknameValidation,
+  updateUserNickname.update);
 
 // Update user lastname and address by id
-usersRouter.put('/:id',
+usersRouter.put('/info/:id',
   validateObjectIdParams,
+  updateUserAddressLastnameValidation,
   updateUserLastnameAddress.update);
 
 // Delete user by id

@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const User = require('../../src/models/User');
 const UsersRepository = require('../../src/repositories/UsersRepository');
 const updateUser = require('../../src/services/UpdateUserNicknameService');
-const { ErrorsApp } = require('../../src/errors/ErrorsApp');
+const { AppErrors } = require('../../src/errors/AppErrors');
 
 let usersRepository = UsersRepository;
 
@@ -67,8 +67,25 @@ describe('UpdateUserNickname', () => {
         }),
       )
         .rejects
-        .toBeInstanceOf(ErrorsApp);
+        .toBeInstanceOf(AppErrors);
     });
+
+  it('should not be able to update the nickname if it contains white space', async () => {
+    const user = await usersRepository.create({
+      name: 'John',
+      lastname: 'Doe',
+      nickname: 'ajohndoe',
+      address: 'Somewhere On Earth, 0, AnyCity-AC',
+      bio: 'lorem ipsum dolor sit amet consectetur adipiscing elit',
+    });
+
+    await expect(
+      updateUser.execute({
+        id: user._id,
+        nickname: 'the john doe',
+      }),
+    ).rejects.toBeInstanceOf(AppErrors);
+  });
 
   it('should not be able to update the nickname of non existent user', async () => {
     await expect(
@@ -79,6 +96,6 @@ describe('UpdateUserNickname', () => {
       }),
     )
       .rejects
-      .toBeInstanceOf(ErrorsApp);
+      .toBeInstanceOf(AppErrors);
   });
 });

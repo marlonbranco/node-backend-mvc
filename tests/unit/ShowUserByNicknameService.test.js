@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const User = require('../../src/models/User');
 const UsersRepository = require('../../src/repositories/UsersRepository');
 const showUser = require('../../src/services/ShowUserByNicknameService');
-const { ErrorsApp } = require('../../src/errors/ErrorsApp');
+const { AppErrors } = require('../../src/errors/AppErrors');
 
 let usersRepository = UsersRepository;
 
@@ -48,6 +48,6 @@ describe('ShowUserByNickname', () => {
     await expect(
       showUser.execute('nonexistente'))
       .rejects
-      .toBeInstanceOf(ErrorsApp);
+      .toBeInstanceOf(AppErrors);
   });
 });

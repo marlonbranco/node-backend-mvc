@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const User = require('../../src/models/User');
 const UsersRepository = require('../../src/repositories/UsersRepository');
 const deleteUser = require('../../src/services/DeleteUserService');
-const { ErrorsApp } = require('../../src/errors/ErrorsApp');
+const { AppErrors } = require('../../src/errors/AppErrors');
 
 let usersRepository = UsersRepository;
 
@@ -43,6 +43,6 @@ describe('DeleteUser', () => {
     await expect(
       deleteUser.execute('nonexistente'))
       .rejects
-      .toBeInstanceOf(ErrorsApp);
+      .toBeInstanceOf(AppErrors);
   });
 });

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { ErrorsApp } = require('../errors/ErrorsApp');
+const { ErrorsApp } = require('../errors/AppErrors');
 
 const databaseUrl = process.env.MONGO_URL;
 
@@ -9,7 +9,7 @@ if (!databaseUrl) {
 const mongoConnection = mongoose.connect(databaseUrl, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
-  useFindAndModify: true,
+  useFindAndModify: false,
   useCreateIndex: true,
 });
 

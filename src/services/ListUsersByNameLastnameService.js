@@ -17,7 +17,7 @@ class ListUsersByNameLastnameService {
     if (lastname && !name) {
       return this.usersRepository.findByLastname(lastname);
     }
-    return { message: 'No user was found with the name and/or lastname provided!' };
+    return [];
   }
 }
 

@@ -1,5 +1,5 @@
 const UsersRepository = require('../repositories/UsersRepository');
-const { ErrorsApp } = require('../errors/ErrorsApp');
+const { AppErrors } = require('../errors/AppErrors');
 
 class ShowUserByNicknameService {
   constructor() {
@@ -10,7 +10,7 @@ class ShowUserByNicknameService {
     const user = await this.usersRepository.findByNickname(nickname);
 
     if (!user) {
-      throw new ErrorsApp('User not found with the provided nickname!', 404);
+      throw new AppErrors('User not found with the provided nickname!', 404);
     }
 
     return user;

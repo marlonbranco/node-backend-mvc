@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const User = require('../../src/models/User');
 const UsersRepository = require('../../src/repositories/UsersRepository');
 const updateUser = require('../../src/services/UpdateUserLastnameAddressService');
-const { ErrorsApp } = require('../../src/errors/ErrorsApp');
+const { AppErrors } = require('../../src/errors/AppErrors');
 
 let usersRepository = UsersRepository;
 
@@ -48,6 +48,6 @@ describe('UpdateUserLastnameAndAddress', () => {
         lastname: 'Trê',
         address: 'Somewhere On Mars, 0, Rock-MR',
       }),
-    ).rejects.toBeInstanceOf(ErrorsApp);
+    ).rejects.toBeInstanceOf(AppErrors);
   });
 });

@@ -1,6 +1,6 @@
 const ObjectId = require('mongoose').Types.ObjectId;
 
-const { ErrorsApp } = require('../errors/ErrorsApp');
+const { AppErrors } = require('../errors/AppErrors');
 
 function validateObjectIdParams(request, response, next) {
   const { id } = request.params;
@@ -19,7 +19,7 @@ function validateObjectIdParams(request, response, next) {
   const check = validateId(id);
 
   if (!check) {
-    throw new ErrorsApp('ID inválido.', 406);
+    throw new AppErrors('ID inválido.', 406);
   }
 }
 

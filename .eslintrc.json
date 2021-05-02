@@ -17,6 +17,7 @@
       "no-unused-vars": "off",
       "class-methods-use-this":  "off",
       "prefer-destructuring": "off",
-      "no-undef": "off"
+      "no-undef": "off",
+      "no-console": "off"
     }
 }

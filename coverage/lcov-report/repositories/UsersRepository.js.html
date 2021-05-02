@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.48% </span>
+                <span class="strong">78.16% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>62/79</span>
+                <span class='fraction'>68/87</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.67% </span>
+                <span class="strong">70% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/9</span>
+                <span class='fraction'>7/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.48% </span>
+                <span class="strong">78.16% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>62/79</span>
+                <span class='fraction'>68/87</span>
             </div>
         
             
@@ -136,7 +136,15 @@
 <a name='L77'></a><a href='#L77'>77</a>
 <a name='L78'></a><a href='#L78'>78</a>
 <a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -167,12 +175,14 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -187,6 +197,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -242,14 +258,16 @@ class UsersRepository {
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
   async findByName<span class="fstat-no" title="function not covered" >(name) {</span>
+<span class="cstat-no" title="statement not covered" >    const nameRegex = new RegExp(name, 'i');</span>
 <span class="cstat-no" title="statement not covered" >    // Query where it cointains the name and its case insensitive</span>
-<span class="cstat-no" title="statement not covered" >    return User.find({ name })</span>
+<span class="cstat-no" title="statement not covered" >    return User.find({ name: { $regex: nameRegex } })</span>
 <span class="cstat-no" title="statement not covered" >      .select('-__v');</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
   async findByLastname<span class="fstat-no" title="function not covered" >(lastname) {</span>
+<span class="cstat-no" title="statement not covered" >    const lastnameRegex = new RegExp(lastname, 'i');</span>
 <span class="cstat-no" title="statement not covered" >    // Query where it cointains the lastname and its case insensitive</span>
-<span class="cstat-no" title="statement not covered" >    return User.find({ lastname })</span>
+<span class="cstat-no" title="statement not covered" >    return User.find({ lastname: { $regex: lastnameRegex } })</span>
 <span class="cstat-no" title="statement not covered" >      .select('-__v');</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
@@ -265,6 +283,12 @@ class UsersRepository {
     },
     { new: true })
       .exec();
+  }
+&nbsp;
+  async checkNickname(nickname) {
+    return User.findOne({
+      nickname,
+    });
   }
 &nbsp;
   async updateLastnameAddress({
@@ -301,7 +325,7 @@ module.exports = UsersRepository;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sat May 01 2021 15:06:00 GMT-0300 (Horário Padrão de Brasília)
+                at Sun May 02 2021 12:23:37 GMT-0300 (Horário Padrão de Brasília)
             </div>
         </div>
         <script src="../prettify.js"></script>

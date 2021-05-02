@@ -1,11 +1,11 @@
-const { ErrorsApp } = require('../errors/ErrorsApp');
+const { AppErrors } = require('../errors/AppErrors');
 
 const errorHandling = (err, request, response, _) => {
-  if (err instanceof ErrorsApp) {
+  if (err instanceof AppErrors) {
     return response
       .status(err.statusCode)
       .json({
-        status: 'error',
+        status: 'Error',
         message: err.message,
       });
   }
@@ -15,7 +15,7 @@ const errorHandling = (err, request, response, _) => {
   return response
     .status(500)
     .json({
-      status: 'error',
+      status: 'Error',
       message: 'Erro interno do servidor.',
     });
 };

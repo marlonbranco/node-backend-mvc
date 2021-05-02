@@ -1,5 +1,5 @@
 const UsersRepository = require('../repositories/UsersRepository');
-const { ErrorsApp } = require('../errors/ErrorsApp');
+const { AppErrors } = require('../errors/AppErrors');
 
 class DeleteUserService {
   constructor() {
@@ -10,7 +10,7 @@ class DeleteUserService {
     const user = await this.usersRepository.findById(userId);
 
     if (!user) {
-      throw new ErrorsApp('User not found', 404);
+      throw new AppErrors('User not found', 404);
     }
     await this.usersRepository.delete(userId);
 
