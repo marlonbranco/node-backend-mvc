@@ -47,18 +47,6 @@ ou
 yarn
 ```
 
-## Executando os testes ✅ ✅ ✅
-
-Execute o seguinte comando no terminal para executar os testes unitários:
-
-```bash
-npm test
-```
-ou
-```bash
-yarn test
-```
-
 ## Criação dos containers com Docker para execução da aplicação 🐳
 
 Execute o seguinte comando no terminal para criar uma build da aplicação em uma imagem do Node.JS onde a API executará e criar junto um container, dentro desse container serão criados 2 containers um para o Node.JS o outro para o MongoDB:
@@ -76,6 +64,18 @@ Agora abra a sua  aplicação do docker e clique no container `node-backend-mvc`
 ![Node container Logs](.github/media/docker-logs.png)
 
 > Se tudo estiver executando perfeitamente os logs da imagem acima deverão ser exibidos.
+
+## Executando os testes ✅ ✅ ✅
+
+Execute o seguinte comando no terminal para executar os testes unitários:
+
+```bash
+npm test
+```
+ou
+```bash
+yarn test
+```
 
 # Documentação com os endpoints da API no Postman 🐱‍🚀
 
