@@ -1,12 +1,10 @@
 node_modules
 *.lock
+package-lock.json
 
 # Webstorm IDE
 .idea
 *.iml
-
-# Docker
-.docker
 
 # Jest
 coverage

@@ -5,9 +5,10 @@ services:
     image: node:14-alpine3.10
     container_name: node-marlon
     restart: always
-    build: .
     command: npm start
-    volumes: ['./:/usr/src/']
+    working_dir: /app
+    volumes:
+      - ./:/app
     ports:
       - '3333:3333'
     external_links:
