@@ -2,7 +2,7 @@
 
 [![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) [![Node.JS](https://img.shields.io/badge/-Node.JS-339933?logo=node.js&logoColor=white)](https://nodejs.org/en/) [![Mongo](https://img.shields.io/badge/-Mongo-47A248?logo=mongodb&logoColor=white)](https://docs.mongodb.com/) [![Mongoose](https://img.shields.io/badge/-Mongoose-880000?Color=white)](https://mongoosejs.com/docs/)
 
-Simples CRUD de Users usando as técnologias JavaScript, Node.JS, MongoDB, Mongoose, Jest, Express.
+Simples CRUD de Users usando as técnologias JavaScript, Node.JS, MongoDB, Mongoose, Jest, Express & Celebrate para validações.
 
 Além disso na construção do projeto foi aplicado o `design pattern` padrão MVC, para os testes unitários TDD, além do conceito Single Responsiblity Principle(Princípio da responsabilidade única) do SOLID.
 
